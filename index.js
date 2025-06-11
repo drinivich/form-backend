@@ -32,7 +32,7 @@ app.post('/submit', async (req, res) => {
     console.log('Email sent!');
     res.redirect(302, 'https://lightning.drinivich.pt/thankyou.html');
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error('Error sending email');
     res.status(500).send('Something went wrong.');
   }
 });
