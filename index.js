@@ -52,10 +52,6 @@ function generateEmailTemplate(name, email, message) {
       font-size: 24px;
       letter-spacing: 1px;
     }
-    .header img {
-      max-width: 60px;
-      margin-bottom: 10px;
-    }
     .content {
       padding: 30px;
       font-size: 16px;
@@ -105,7 +101,6 @@ function generateEmailTemplate(name, email, message) {
 <body>
   <div class="container">
     <div class="header">
-      <img src="https://raw.githubusercontent.com/drinivich/form-backend/main/fundo-escuro.png" alt="LightningPro Logo" />
       New Submission Received from LightningPro Website
     </div>
     <div class="content">
@@ -134,7 +129,6 @@ function generateEmailTemplate(name, email, message) {
 </html>
 `;
 }
-
 
 // POST route to handle form submission
 app.post('/submit', async (req, res) => {
