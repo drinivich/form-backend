@@ -77,7 +77,7 @@ function generateEmailTemplate(name, email, message) {
     }
     .field-label {
       font-size: 12px;
-      color: ##faf8f8;
+      color: #faf8f8;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 5px;
@@ -85,7 +85,7 @@ function generateEmailTemplate(name, email, message) {
     }
     .field-value {
       font-size: 16px;
-      color: ##faf8f8;
+      color: #faf8f8;
       word-wrap: break-word;
     }
     .field-value.email {
@@ -172,7 +172,7 @@ app.post('/submit', async (req, res) => {
       });
     }
 
-    const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return res.status(400).json({
         success: false,
