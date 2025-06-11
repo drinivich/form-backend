@@ -23,5 +23,17 @@ app.post('/submit', async (req, res) => {
   const mailOptions = {
     from: email,
     to: 'lightningproteam@gmail.com',
-    subject: 'New Contact Form Submission',
-    text: `You received a message:\n\nName: ${name}\nEmail: ${email}\nMessage:\
+    subject: 'New Submission Received From LightningProContactPage',
+    html: `
+      <div style="font-family: Arial, sans-serif; background-color: #f8faff; padding: 20px;">
+        <h2 style="color: #0a47d1; text-align: center;">New Submission Received From<br><strong>LightningProContactPage</strong></h2>
+        <div style="margin-top: 30px; font-size: 16px;">
+          <p><strong>email</strong><br><a href="mailto:${email}">${email}</a></p>
+          <p><strong>name</strong><br>${name}</p>
+          <p><strong>message</strong><br>${message.replace(/\n/g, '<br>')}</p>
+        </div>
+        <hr style="margin-top: 30px;"/>
+        <p style="font-size: 12px; color: #999; text-align: center;">Powered by Lightning Pro Contact Form</p>
+      </div>
+    `
+  };
