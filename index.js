@@ -25,7 +25,7 @@ app.post('/submit', async (req, res) => {
     to: 'lightningproteam@gmail.com',
     subject: 'New Submission Received From Lightning Pro Contact Page',
     html: `
-      <div style="font-family: Arial, sans-serif; background-color: ##ff0000; padding: 20px;">
+      <div style="font-family: Arial, sans-serif; background-color: #ff0000; padding: 20px;">
         <h2 style="color: #0a47d1; text-align: center;">New Submission Received From<br><strong>LightningProContactPage</strong></h2>
         <div style="margin-top: 30px; font-size: 16px;">
           <p><strong>email</strong><br><a href="mailto:${email}">${email}</a></p>
