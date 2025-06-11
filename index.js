@@ -55,7 +55,7 @@ function generateEmailTemplate(name, email, message) {
     .logo {
       width: 60px;
       height: 60px;
-      background: rgba(255, 193, 7, 0.9);
+      background-color: #ff0000;
       border-radius: 8px;
       margin: 0 auto 15px;
       display: flex;
@@ -94,7 +94,7 @@ function generateEmailTemplate(name, email, message) {
     }
     .message-field {
       background-color: #f8f9fa;
-      border-left: 4px solid #667eea;
+      border-left: 4px solid #ffb700;
       padding: 15px;
       border-radius: 0 4px 4px 0;
       margin-top: 10px;
@@ -121,7 +121,7 @@ function generateEmailTemplate(name, email, message) {
   <div class="email-container">
     <div class="header">
       <div class="logo">
-        <img src="https://raw.githubusercontent.com/drinivich/form-backend/main/fundo-escuro-com-cor.png" alt="LightningPro Logo" />
+        <img src="https://raw.githubusercontent.com/drinivich/form-backend/main/fundo-escuro.png" alt="LightningPro Logo" />
       </div>
       <h1>New Submission Received From<br>LightningProContactPage</h1>
     </div>
