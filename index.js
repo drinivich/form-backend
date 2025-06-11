@@ -62,7 +62,7 @@ function generateEmailTemplate(name, email, message) {
 <body>
   <div class="container">
     <div class="logo">
-      <img src="https://raw.githubusercontent.com/drinivich/form-backend/main/fundo-escuro-com-cor.png" alt="LightningPro Logo">
+      <img src="https://raw.githubusercontent.com/drinivich/form-backend/main/fundo-escuro.png" alt="LightningPro Logo">
     </div>
     <div class="title">
       New Submission Received From<br>LightningProContactPage
