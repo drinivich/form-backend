@@ -28,24 +28,6 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-function generateEmailTemplate(name, email, message) {
-  return `
-    <div style="font-family: 'Arial', sans-serif; background-color: #f4f4f4; padding: 20px;">
-      <div style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; padding: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
-        <h2 style="color: #B22222; margin-top: 0;">📩 Lightning Pro Contact Message</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> <a href="mailto:${email}" style="color: #B22222;">${email}</a></p>
-        <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-        <p><strong>Message:</strong></p>
-        <p style="white-space: pre-wrap; background: #fdf4f4; padding: 15px; border-left: 4px solid #B22222; border-radius: 4px;">${message}</p>
-        <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-        <p style="font-size: 0.85em; color: #888;">This message was sent from the <strong>Lightning Pro</strong> website.</p>
-      </div>
-    </div>
-  `;
-}
-
-
 // POST route to handle form submission
 app.post('/submit', async (req, res) => {
   try {
