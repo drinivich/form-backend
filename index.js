@@ -18,148 +18,123 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-// Generate HTML email template
 function generateEmailTemplate(name, email, message) {
   return `
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>New Contact Form Submission</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: #f9f9f9;
       color: #333;
-      max-width: 500px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
     }
-    .email-container {
-      background-color: #ffffff;
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #fff;
       border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 15px rgba(255, 0, 0, 0.1);
       overflow: hidden;
+      border: 1px solid #ff0000cc;
     }
     .header {
-      background: rgb(255, 0, 0);
+      background-color: #cc0000; /* Dark red */
       color: white;
-      padding: 30px 20px;
+      padding: 20px 30px;
       text-align: center;
-    }
-    .header h1 {
-      margin: 0;
+      font-weight: 700;
       font-size: 24px;
-      font-weight: 600;
+      letter-spacing: 1px;
     }
-    .logo {
-      width: 64px;
-      height: 64px;
-      background: rgba(255, 193, 7, 0.9);
-      border-radius: 8px;
-      margin: 0 auto 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px;
-    }
-    .logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 4px;
+    .header img {
+      max-width: 60px;
+      margin-bottom: 10px;
     }
     .content {
       padding: 30px;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #222;
     }
-    .field-group {
-      margin-bottom: 25px;
+    .field {
+      margin-bottom: 20px;
     }
     .field-label {
-      font-size: 12px;
-      color: #faf8f8;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 5px;
+      display: block;
       font-weight: 600;
+      margin-bottom: 6px;
+      color: #cc0000; /* Red label */
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
     .field-value {
-      font-size: 16px;
-      color: #faf8f8;
-      word-wrap: break-word;
+      background: #feeaea;
+      border-radius: 4px;
+      padding: 10px 15px;
+      color: #990000;
+      word-break: break-word;
+      font-size: 15px;
     }
-    .field-value.email {
-      color: #faf8f8;
-      font-weight: 500;
-    }
-    .message-field {
-      background-color: #faf8f8;
-      border-left: 4px solid #ffee00;
-      padding: 15px;
-      border-radius: 0 4px 4px 0;
-      margin-top: 10px;
+    .message-value {
+      white-space: pre-wrap;
     }
     .footer {
-      background-color: #fef2f2;
-      padding: 20px;
+      background-color: #ffeeee;
+      color: #990000;
       text-align: center;
-      border-top: 1px solid #fecaca;
-    }
-    .footer p {
-      margin: 0;
-      font-size: 12px;
-      color: #7f1d1d;
+      padding: 20px 30px;
+      font-size: 13px;
+      border-top: 1px solid #cc0000;
     }
     .timestamp {
-      font-size: 11px;
-      color: #7f1d1d;
-      margin-top: 10px;
+      color: #aa0000;
+      font-size: 12px;
+      margin-top: 15px;
+      text-align: right;
+      font-style: italic;
     }
   </style>
 </head>
 <body>
-  <div class="email-container">
+  <div class="container">
     <div class="header">
-      <div class="logo">
-        <img src="https://raw.githubusercontent.com/drinivich/form-backend/main/fundo-escuro.png" alt="LightningPro Logo" />
-      </div>
-      <h1>New Submission Received From<br>Lightning Website Contact Page</h1>
+      <img src="https://raw.githubusercontent.com/drinivich/form-backend/main/fundo-escuro.png" alt="LightningPro Logo" />
+      New Submission Received from LightningPro Website
     </div>
-
     <div class="content">
-      <div class="field-group">
-        <div class="field-label" style="color: #7f1d1d">email</div>
-        <div class="field-value email">${email}</div>
+      <div class="field">
+        <span class="field-label">Email</span>
+        <div class="field-value">${email}</div>
       </div>
-
-      <div class="field-group">
-        <div class="field-label" style="color: #7f1d1d">name</div>
+      <div class="field">
+        <span class="field-label">Name</span>
         <div class="field-value">${name}</div>
       </div>
-
-      <div class="field-group">
-        <div class="field-label" style="color: #7f1d1d">message</div>
-        <div class="message-field">
-          <div class="field-value">${message}</div>
-        </div>
+      <div class="field">
+        <span class="field-label">Message</span>
+        <div class="field-value message-value">${message}</div>
       </div>
-
-      <div class="timestamp" style="color: #7f1d1d">
+      <div class="timestamp">
         Received on ${new Date().toLocaleString()}
       </div>
     </div>
-
     <div class="footer">
-      <p style="color: #7f1d1d" >Copyright © ${new Date().getFullYear()} LightningPro. All rights reserved.</p>
-      <p style="margin-top: 10px; font-size: 11px;">
-        Powered by <strong>LightningPro Contact System</strong>
-      </p>
+      &copy; ${new Date().getFullYear()} LightningPro. All rights reserved.<br />
+      Powered by <strong>LightningPro Contact System</strong>
     </div>
   </div>
 </body>
-</html>`;
+</html>
+`;
 }
+
 
 // POST route to handle form submission
 app.post('/submit', async (req, res) => {
