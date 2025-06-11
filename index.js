@@ -18,7 +18,6 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-// Generate HTML email template
 function generateEmailTemplate(name, email, message) {
   return `
 <!DOCTYPE html>
@@ -26,136 +25,47 @@ function generateEmailTemplate(name, email, message) {
 <head>
   <meta charset="UTF-8">
   <title>New Contact Form Submission</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      max-width: 500px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #f5f5f5;
-    }
-    .email-container {
-      background-color: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-    }
-    .header {
-      background: rgb(255, 0, 0);
-      color: white;
-      padding: 30px 20px;
-      text-align: center;
-    }
-    .header h1 {
-      margin: 0;
-      font-size: 24px;
-      font-weight: 600;
-    }
-    .logo {
-      width: 64px;
-      height: 64px;
-      background: rgba(255, 193, 7, 0.9);
-      border-radius: 8px;
-      margin: 0 auto 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px;
-    }
-    .logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 4px;
-    }
-    .content {
-      padding: 30px;
-    }
-    .field-group {
-      margin-bottom: 25px;
-    }
-    .field-label {
-      font-size: 12px;
-      color: #faf8f8;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 5px;
-      font-weight: 600;
-    }
-    .field-value {
-      font-size: 16px;
-      color: #faf8f8;
-      word-wrap: break-word;
-    }
-    .field-value.email {
-      color: #faf8f8;
-      font-weight: 500;
-    }
-    .message-field {
-      background-color: #faf8f8;
-      border-left: 4px solid #ffee00;
-      padding: 15px;
-      border-radius: 0 4px 4px 0;
-      margin-top: 10px;
-    }
-    .footer {
-      background-color: #fef2f2;
-      padding: 20px;
-      text-align: center;
-      border-top: 1px solid #fecaca;
-    }
-    .footer p {
-      margin: 0;
-      font-size: 12px;
-      color: #7f1d1d;
-    }
-    .timestamp {
-      font-size: 11px;
-      color: #7f1d1d;
-      margin-top: 10px;
-    }
-  </style>
 </head>
-<body>
-  <div class="email-container">
-    <div class="header">
-      <div class="logo">
-        <img src="https://raw.githubusercontent.com/drinivich/form-backend/main/fundo-escuro.png" alt="LightningPro Logo" />
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f5f5f5; padding: 20px; margin: 0;">
+  <div style="max-width: 500px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); overflow: hidden;">
+
+    <div style="background: rgb(255, 0, 0); color: white; padding: 30px 20px; text-align: center;">
+      <div style="width: 64px; height: 64px; background: rgba(255, 193, 7, 0.9); border-radius: 8px; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; padding: 8px;">
+        <img src="https://raw.githubusercontent.com/drinivich/form-backend/main/fundo-escuro.png" alt="LightningPro Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 4px;" />
       </div>
-      <h1>New Submission Received From<br>Lightning Website Contact Page</h1>
+      <h1 style="margin: 0; font-size: 20px; font-weight: 600;">New Submission Received From<br>Lightning Website Contact Page</h1>
     </div>
 
-    <div class="content">
-      <div class="field-group">
-        <div class="field-label" style="color: #7f1d1d">email</div>
-        <div class="field-value email">${email}</div>
+    <div style="padding: 30px;">
+      <div style="margin-bottom: 25px;">
+        <div style="font-size: 12px; color: #7f1d1d; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; font-weight: 600;">Email</div>
+        <div style="font-size: 16px; color: #333; word-wrap: break-word; font-weight: 500;">${email}</div>
       </div>
 
-      <div class="field-group">
-        <div class="field-label" style="color: #7f1d1d">name</div>
-        <div class="field-value">${name}</div>
+      <div style="margin-bottom: 25px;">
+        <div style="font-size: 12px; color: #7f1d1d; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; font-weight: 600;">Name</div>
+        <div style="font-size: 16px; color: #333; word-wrap: break-word;">${name}</div>
       </div>
 
-      <div class="field-group">
-        <div class="field-label" style="color: #7f1d1d">message</div>
-        <div class="message-field">
-          <div class="field-value">${message}</div>
+      <div style="margin-bottom: 25px;">
+        <div style="font-size: 12px; color: #7f1d1d; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; font-weight: 600;">Message</div>
+        <div style="background-color: #faf8f8; border-left: 4px solid #ffee00; padding: 15px; border-radius: 0 4px 4px 0;">
+          <div style="font-size: 16px; color: #333; white-space: pre-wrap;">${message}</div>
         </div>
       </div>
 
-      <div class="timestamp" style="color: #7f1d1d">
+      <div style="font-size: 11px; color: #7f1d1d; margin-top: 10px;">
         Received on ${new Date().toLocaleString()}
       </div>
     </div>
 
-    <div class="footer">
-      <p style="color: #7f1d1d" >Copyright © ${new Date().getFullYear()} LightningPro. All rights reserved.</p>
-      <p style="margin-top: 10px; font-size: 11px;">
+    <div style="background-color: #fef2f2; padding: 20px; text-align: center; border-top: 1px solid #fecaca;">
+      <p style="margin: 0; font-size: 12px; color: #7f1d1d;">Copyright © ${new Date().getFullYear()} LightningPro. All rights reserved.</p>
+      <p style="margin-top: 10px; font-size: 11px; color: #7f1d1d;">
         Powered by <strong>LightningPro Contact System</strong>
       </p>
     </div>
+
   </div>
 </body>
 </html>`;
