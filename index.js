@@ -1,89 +1,80 @@
+const express = require('express');
+const cors = require('cors');
+const nodemailer = require('nodemailer');
+require('dotenv').config(); // Load environment variables from .env
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASS
+  }
+});
+
 function generateEmailTemplate(name, email, message) {
   return `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>New Submission</title>
-  <style>
-    body {
-      background-color: #f8fafc;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      margin: 0;
-      padding: 40px 0;
-      color: #1f2937;
-    }
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      background-color: #ffffff;
-      border-radius: 12px;
-      padding: 40px;
-      box-shadow: 0 0 0 1px #e5e7eb;
-    }
-    .logo {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    .logo img {
-      width: 40px;
-      height: 40px;
-    }
-    .title {
-      text-align: center;
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 30px;
-      color: #111827;
-    }
-    .field {
-      margin-bottom: 20px;
-    }
-    .field label {
-      font-size: 12px;
-      text-transform: uppercase;
-      color: #6b7280;
-      letter-spacing: 0.5px;
-      display: block;
-      margin-bottom: 4px;
-    }
-    .field-value {
-      font-size: 16px;
-      color: #111827;
-    }
-    .footer {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 12px;
-      color: #9ca3af;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="logo">
-      <img src="https://raw.githubusercontent.com/drinivich/form-backend/main/fundo-escuro.png" alt="LightningPro Logo">
-    </div>
-    <div class="title">
-      New Submission Received From<br>LightningProContactPage
-    </div>
-    <div class="field">
-      <label>Email</label>
-      <div class="field-value">${email}</div>
-    </div>
-    <div class="field">
-      <label>Name</label>
-      <div class="field-value">${name}</div>
-    </div>
-    <div class="field">
-      <label>Message</label>
-      <div class="field-value">${message}</div>
-    </div>
-    <div class="footer">
-      &copy; ${new Date().getFullYear()} LightningPro. All rights reserved.
-    </div>
-  </div>
-</body>
-</html>
-`;
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>New Contact Form Submission</title>
+    <style>
+      /* your existing styles here */
+    </style>
+  </head>
+  <body>
+    <!-- your existing HTML email template here -->
+    <div class="field-value email">${email}</div>
+    <div class="field-value">${name}</div>
+    <div class="field-value">${message}</div>
+    <div class="timestamp">Received on ${new Date().toLocaleString()}</div>
+  </body>
+  </html>`;
 }
+
+app.post('/submit', async (req, res) => {
+  try {
+    const { name, email, message } = req.body;
+
+    if (!name || !email || !message) {
+      return res.status(400).json({ success: false, message: 'Please fill in all required fields' });
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ success: false, message: 'Please provide a valid email address' });
+    }
+
+    const htmlContent = generateEmailTemplate(name, email, message);
+
+    const mailOptions = {
+      from: '"LightningPro Contact" <' + process.env.GMAIL_USER + '>',
+      to: process.env.GMAIL_USER,
+      replyTo: `"${name}" <${email}>`,
+      subject: `New Submission Received From LightningProContactPage`,
+      html: htmlContent,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.status(200).json({ success: true, message: 'Message sent successfully!' });
+  } catch (error) {
+    console.error('Error sending email:', error);
+    res.status(500).json({ success: false, message: 'Failed to send message. Please try again later.' });
+  }
+});
+
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
