@@ -1,3 +1,5 @@
+require('dotenv').config();  // Load .env variables at the very top
+
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
@@ -12,8 +14,8 @@ app.use(express.json());
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'lightningproteam@gmail.com',
-    pass: 'drkn sybw yezz xclv' // Use your app password here
+    user: process.env.EMAIL_USER,   // from .env
+    pass: process.env.EMAIL_PASS    // from .env
   }
 });
 
@@ -22,6 +24,20 @@ app.post('/submit', async (req, res) => {
 
   const mailOptions = {
     from: email,
-    to: 'lightningproteam@gmail.com',
+    to: process.env.EMAIL_USER,
     subject: 'New Contact Form Submission',
-    text: `You received a message:\n\nName: ${name}\nEmail: ${email}\nMessage:\
+    text: `You received a message:\n\nName: ${name}\nEmail: ${email}\nMessage:\n${message}`
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: 'Message sent successfully!' });
+  } catch (error) {
+    console.error('Error sending email:', error);
+    res.status(500).json({ error: 'Failed to send message.' });
+  }
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
