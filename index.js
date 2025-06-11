@@ -30,7 +30,7 @@ function generateEmailTemplate(name, email, message) {
       font-family: Arial, sans-serif;
       line-height: 1.6;
       color: #333;
-      max-width: 600px;
+      max-width: 500px;
       margin: 0 auto;
       padding: 20px;
       background-color: #f5f5f5;
@@ -53,8 +53,8 @@ function generateEmailTemplate(name, email, message) {
       font-weight: 600;
     }
     .logo {
-      width: 60px;
-      height: 60px;
+      width: 64px;
+      height: 64px;
       background: rgba(255, 193, 7, 0.9);
       border-radius: 8px;
       margin: 0 auto 15px;
@@ -77,7 +77,7 @@ function generateEmailTemplate(name, email, message) {
     }
     .field-label {
       font-size: 12px;
-      color: #dc2626;
+      color: ##faf8f8;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 5px;
@@ -85,16 +85,16 @@ function generateEmailTemplate(name, email, message) {
     }
     .field-value {
       font-size: 16px;
-      color: #333;
+      color: ##faf8f8;
       word-wrap: break-word;
     }
     .field-value.email {
-      color: #dc2626;
+      color: ##faf8f8;
       font-weight: 500;
     }
     .message-field {
-      background-color: #f8f9fa;
-      border-left: 4px solid #667eea;
+      background-color: #faf8f8;
+      border-left: 4px solid #ffee00;
       padding: 15px;
       border-radius: 0 4px 4px 0;
       margin-top: 10px;
@@ -112,7 +112,7 @@ function generateEmailTemplate(name, email, message) {
     }
     .timestamp {
       font-size: 11px;
-      color: #999;
+      color: #7f1d1d;
       margin-top: 10px;
     }
   </style>
@@ -121,36 +121,36 @@ function generateEmailTemplate(name, email, message) {
   <div class="email-container">
     <div class="header">
       <div class="logo">
-        <img src="https://raw.githubusercontent.com/drinivich/form-backend/main/fundo-escuro-com-cor.png" alt="LightningPro Logo" />
+        <img src="https://raw.githubusercontent.com/drinivich/form-backend/main/fundo-escuro.png" alt="LightningPro Logo" />
       </div>
-      <h1>New Submission Received From<br>LightningProContactPage</h1>
+      <h1>New Submission Received From<br>Lightning Website Contact Page</h1>
     </div>
 
     <div class="content">
       <div class="field-group">
-        <div class="field-label">email</div>
+        <div class="field-label" style="color: #7f1d1d">email</div>
         <div class="field-value email">${email}</div>
       </div>
 
       <div class="field-group">
-        <div class="field-label">name</div>
+        <div class="field-label" style="color: #7f1d1d">name</div>
         <div class="field-value">${name}</div>
       </div>
 
       <div class="field-group">
-        <div class="field-label">message</div>
+        <div class="field-label" style="color: #7f1d1d">message</div>
         <div class="message-field">
           <div class="field-value">${message}</div>
         </div>
       </div>
 
-      <div class="timestamp">
+      <div class="timestamp" style="color: #7f1d1d">
         Received on ${new Date().toLocaleString()}
       </div>
     </div>
 
     <div class="footer">
-      <p>Copyright © ${new Date().getFullYear()} LightningPro. All rights reserved.</p>
+      <p style="color: #7f1d1d" >Copyright © ${new Date().getFullYear()} LightningPro. All rights reserved.</p>
       <p style="margin-top: 10px; font-size: 11px;">
         Powered by <strong>LightningPro Contact System</strong>
       </p>
