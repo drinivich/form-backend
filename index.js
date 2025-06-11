@@ -90,17 +90,17 @@ function generateEmailTemplate(name, email, message) {
             text-decoration: none;
         }
         .message-field {
-            background-color: #f8f9fa;
-            border-left: 4px solid #667eea;
+            background-color: ##faf8f8;
+            border-left: 4px solid #ff0000;
             padding: 15px;
             border-radius: 0 4px 4px 0;
             margin-top: 10px;
         }
         .footer {
-            background-color: #f8f9fa;
+            background-color: ##faf8f8;
             padding: 20px;
             text-align: center;
-            border-top: 1px solid #e9ecef;
+            border-top: 1px solid ##ff0000;
         }
         .footer p {
             margin: 0;
@@ -126,7 +126,7 @@ function generateEmailTemplate(name, email, message) {
     <div class="email-container">
         <div class="header">
             <div class="logo"></div>
-            <h1>New Submission Received From<br>LightningProContactPage</h1>
+            <h1>New Submission Received From<br>Lightning Pro Contact Page</h1>
         </div>
         
         <div class="content">
