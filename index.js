@@ -28,25 +28,23 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-// Generates the HTML content for the email
 function generateEmailTemplate(name, email, message) {
   return `
-    <div style="font-family: 'Segoe UI', sans-serif; background-color: #f9f9f9; padding: 20px; border-radius: 10px;">
-      <div style="max-width: 600px; margin: auto; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); padding: 30px;">
-        <h2 style="color: #8B0000;">New Message from Lightning Pro Contact Form</h2>
+    <div style="font-family: 'Arial', sans-serif; background-color: #f4f4f4; padding: 20px;">
+      <div style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; padding: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
+        <h2 style="color: #B22222; margin-top: 0;">📩 Lightning Pro Contact Message</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> <a href="mailto:${email}" style="color: #B22222;">${email}</a></p>
         <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-        <p><strong>👤 Name:</strong> ${name}</p>
-        <p><strong>📧 Email:</strong> <a href="mailto:${email}" style="color: #8B0000;">${email}</a></p>
-        <p><strong>📝 Message:</strong></p>
-        <div style="background-color: #fff5f5; padding: 15px; border-radius: 8px; border-left: 4px solid #B22222; white-space: pre-wrap;">
-          ${message}
-        </div>
+        <p><strong>Message:</strong></p>
+        <p style="white-space: pre-wrap; background: #fdf4f4; padding: 15px; border-left: 4px solid #B22222; border-radius: 4px;">${message}</p>
         <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-        <p style="font-size: 0.9em; color: #888;">Sent automatically from the <strong style="color:#B22222;">Lightning Pro</strong> website 🚀</p>
+        <p style="font-size: 0.85em; color: #888;">This message was sent from the <strong>Lightning Pro</strong> website.</p>
       </div>
     </div>
   `;
 }
+
 
 // POST route to handle form submission
 app.post('/submit', async (req, res) => {
