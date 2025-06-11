@@ -26,15 +26,8 @@ function generateEmailTemplate(name, email, message) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Contact Form Submission</title>
     <style>
-        @font-face {
-          font-family: 'LightningPro';
-          src: url('LightningProFont.ttf');
-          font-weight: normal;
-          font-style: normal;
-    }
-    
         body {
-            font-family: LightningPro, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: #333;
             max-width: 600px;
@@ -60,19 +53,21 @@ function generateEmailTemplate(name, email, message) {
             font-weight: 600;
         }
         .logo {
-            width: 40px;
-            height: 40px;
+            width: 60px;
+            height: 60px;
             background: rgba(255, 193, 7, 0.9);
             border-radius: 8px;
             margin: 0 auto 15px;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 8px;
         }
-        .logo::before {
-            img: url("fundo-escuro-com-cor.png");
-            font-size: 20px;
-            color: #dc2626;
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 4px;
         }
         .content {
             padding: 30px;
@@ -100,16 +95,16 @@ function generateEmailTemplate(name, email, message) {
         }
         .message-field {
             background-color: #f8f9fa;
-            border-left: 4px solid #ffb700;
+            border-left: 4px solid #667eea;
             padding: 15px;
             border-radius: 0 4px 4px 0;
             margin-top: 10px;
         }
         .footer {
-            background-color: #f8f9fa;
+            background-color: #fef2f2;
             padding: 20px;
             text-align: center;
-            border-top: 1px solid #e9ecef;
+            border-top: 1px solid #fecaca;
         }
         .footer p {
             margin: 0;
@@ -134,7 +129,9 @@ function generateEmailTemplate(name, email, message) {
 <body>
     <div class="email-container">
         <div class="header">
-            <div class="logo"></div>
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com/drinivich/form-backend/main/fundo-escuro-com-cor.png" alt="LightningPro Logo" />
+            </div>
             <h1>New Submission Received From<br>LightningProContactPage</h1>
         </div>
         
