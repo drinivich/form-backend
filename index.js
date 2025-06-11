@@ -42,7 +42,7 @@ function generateEmailTemplate(name, email, message) {
             overflow: hidden;
         }
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
             color: white;
             padding: 30px 20px;
             text-align: center;
@@ -55,7 +55,7 @@ function generateEmailTemplate(name, email, message) {
         .logo {
             width: 40px;
             height: 40px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 193, 7, 0.9);
             border-radius: 8px;
             margin: 0 auto 15px;
             display: flex;
@@ -65,6 +65,7 @@ function generateEmailTemplate(name, email, message) {
         .logo::before {
             content: "⚡";
             font-size: 20px;
+            color: #dc2626;
         }
         .content {
             padding: 30px;
@@ -74,11 +75,11 @@ function generateEmailTemplate(name, email, message) {
         }
         .field-label {
             font-size: 12px;
-            color: #888;
+            color: #dc2626;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 5px;
-            font-weight: 500;
+            font-weight: 600;
         }
         .field-value {
             font-size: 16px;
@@ -86,26 +87,27 @@ function generateEmailTemplate(name, email, message) {
             word-wrap: break-word;
         }
         .field-value.email {
-            color: #4285f4;
+            color: #dc2626;
             text-decoration: none;
+            font-weight: 500;
         }
         .message-field {
-            background-color: ##faf8f8;
-            border-left: 4px solid #ff0000;
+            background-color: #f8f9fa;
+            border-left: 4px solid #667eea;
             padding: 15px;
             border-radius: 0 4px 4px 0;
             margin-top: 10px;
         }
         .footer {
-            background-color: ##faf8f8;
+            background-color: #f8f9fa;
             padding: 20px;
             text-align: center;
-            border-top: 1px solid ##ff0000;
+            border-top: 1px solid #e9ecef;
         }
         .footer p {
             margin: 0;
             font-size: 12px;
-            color: #6c757d;
+            color: #7f1d1d;
         }
         .timestamp {
             font-size: 11px;
@@ -126,7 +128,7 @@ function generateEmailTemplate(name, email, message) {
     <div class="email-container">
         <div class="header">
             <div class="logo"></div>
-            <h1>New Submission Received From<br>Lightning Pro Contact Page</h1>
+            <h1>New Submission Received From<br>LightningProContactPage</h1>
         </div>
         
         <div class="content">
