@@ -58,7 +58,7 @@ app.post('/submit', async (req, res) => {
       from: '"LightningPro Contact" <' + process.env.GMAIL_USER + '>',
       to: process.env.GMAIL_USER,
       replyTo: `"${name}" <${email}>`,
-      subject: `New Submission Received From LightningProContactPage`,
+      subject: `New Submission Received From Lightning Pro Contact Page`,
       html: htmlContent,
     };
 
