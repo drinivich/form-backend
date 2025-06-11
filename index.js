@@ -27,7 +27,7 @@ function generateEmailTemplate(name, email, message) {
   <title>New Contact Form Submission</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: Impact, sans-serif;
       line-height: 1.6;
       color: #333;
       max-width: 600px;
@@ -94,7 +94,7 @@ function generateEmailTemplate(name, email, message) {
     }
     .message-field {
       background-color: #f8f9fa;
-      border-left: 4px solid #667eea;
+      border-left: 4px solid #ffee00;
       padding: 15px;
       border-radius: 0 4px 4px 0;
       margin-top: 10px;
