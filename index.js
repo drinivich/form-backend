@@ -63,7 +63,7 @@ function generateEmailTemplate(name, email, message) {
             justify-content: center;
         }
         .logo::before {
-            content: "⚡";
+            img: url("fundo-escuro-com-cor.png");
             font-size: 20px;
             color: #dc2626;
         }
@@ -93,7 +93,7 @@ function generateEmailTemplate(name, email, message) {
         }
         .message-field {
             background-color: #f8f9fa;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #ffb700;
             padding: 15px;
             border-radius: 0 4px 4px 0;
             margin-top: 10px;
