@@ -56,7 +56,7 @@ function generateEmailTemplate(name, email, message) {
     .logo {
       width: 64px;
       height: 64px;
-      background: rgba(255, 193, 7, 0.9);
+      background: rgba(255, 0, 0, 0.9);
       border-radius: 8px;
       margin: 0 auto 15px;
       display: flex;
