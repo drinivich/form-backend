@@ -187,13 +187,13 @@ app.post('/submit', async (req, res) => {
     const htmlContent = generateEmailTemplate(name, email, message);
     
     const mailOptions = {
-      from: 'lightningproteam@gmail.com', // Use your authenticated email
+      from: '"LightningPro Contact" <lightningproteam@gmail.com>', // Use your authenticated email with display name
       to: 'lightningproteam@gmail.com',
-      replyTo: email, // This allows you to reply directly to the sender
+      replyTo: `"${name}" <${email}>`, // This allows you to reply directly to the sender
       subject: `New Submission Received From LightningProContactPage`,
       html: htmlContent,
-      // Also include plain text version for better compatibility
-      text: `New Contact Form Submission\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}\n\nReceived on ${new Date().toLocaleString()}`
+      // Remove or comment out the text version to force HTML rendering
+      // text: `New Contact Form Submission\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}\n\nReceived on ${new Date().toLocaleString()}`
     };
 
     await transporter.sendMail(mailOptions);
