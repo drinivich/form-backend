@@ -124,22 +124,22 @@ function generateEmailTemplate(name, email, message) {
       <div class="logo">
         <img src="https://raw.githubusercontent.com/drinivich/form-backend/main/fundo-escuro.png" alt="LightningPro Logo" />
       </div>
-      <h1>New Submission Received From<br>Lightning Website Contact Page</h1>
+      <h1>New Submission Received From<br>Lightning Pro Website</h1>
     </div>
 
     <div class="content">
       <div class="field-group">
-        <div class="field-label" style="color: #7f1d1d">email</div>
+        <div class="field-label" style="color: #7f1d1d; font-weight:bold">email</div>
         <div class="field-value email">${email}</div>
       </div>
 
       <div class="field-group">
-        <div class="field-label" style="color: #7f1d1d">name</div>
+        <div class="field-label" style="color: #7f1d1d; font-weight:bold">name</div>
         <div class="field-value">${name}</div>
       </div>
 
       <div class="field-group">
-        <div class="field-label" style="color: #7f1d1d">message</div>
+        <div class="field-label" style="color: #7f1d1d; font-weight:bold">message</div>
         <div class="message-field">
           <div class="field-value">${message}</div>
         </div>
