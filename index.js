@@ -26,8 +26,15 @@ function generateEmailTemplate(name, email, message) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Contact Form Submission</title>
     <style>
+        @font-face {
+          font-family: 'LightningPro';
+          src: url('LightningProFont.ttf');
+          font-weight: normal;
+          font-style: normal;
+    }
+    
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: LightningPro, sans-serif;
             line-height: 1.6;
             color: #333;
             max-width: 600px;
