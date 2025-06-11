@@ -19,89 +19,22 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-// Function to generate HTML email template
 function generateEmailTemplate(name, email, message) {
   return `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>New Contact Form Submission</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 600px;
-      margin: 40px auto;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(204, 0, 0, 0.1);
-      border: 2px solid #cc0000;
-    }
-    .header {
-      background-color: #cc0000;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-      font-weight: bold;
-      font-size: 24px;
-    }
-    .content {
-      padding: 20px;
-      font-size: 16px;
-      color: #222;
-    }
-    .field {
-      margin-bottom: 15px;
-    }
-    .field-label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: #cc0000;
-    }
-    .field-value {
-      background: #feeaea;
-      padding: 10px;
-      border-radius: 4px;
-      color: #990000;
-    }
-    .footer {
-      background-color: #ffeeee;
-      color: #990000;
-      text-align: center;
-      padding: 15px;
-      font-size: 13px;
-      border-top: 2px solid #cc0000;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">New Message Received</div>
-    <div class="content">
-      <div class="field">
-        <span class="field-label">Name:</span>
-        <div class="field-value">${name}</div>
-      </div>
-      <div class="field">
-        <span class="field-label">Email:</span>
-        <div class="field-value">${email}</div>
-      </div>
-      <div class="field">
-        <span class="field-label">Message:</span>
-        <div class="field-value">${message}</div>
+    <div style="font-family: 'Segoe UI', sans-serif; background-color: #f9f9f9; padding: 20px; border-radius: 10px;">
+      <div style="max-width: 600px; margin: auto; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); padding: 30px;">
+        <h2 style="color: #8B0000;">New Message from Lightning Pro Contact Form</h2>
+        <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+        <p><strong>👤 Name:</strong> ${name}</p>
+        <p><strong>📧 Email:</strong> <a href="mailto:${email}" style="color: #8B0000;">${email}</a></p>
+        <p><strong>📝 Message:</strong></p>
+        <div style="background-color: #fff5f5; padding: 15px; border-radius: 8px; border-left: 4px solid #B22222; white-space: pre-wrap;">
+          ${message}
+        </div>
+        <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+        <p style="font-size: 0.9em; color: #888;">Sent automatically from the <strong style="color:#B22222;">Lightning Pro</strong> website 🚀</p>
       </div>
     </div>
-    <div class="footer">&copy; ${new Date().getFullYear()} LightningPro. All rights reserved.</div>
-  </div>
-</body>
-</html>
   `;
 }
 
