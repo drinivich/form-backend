@@ -6,7 +6,16 @@ require('dotenv').config(); // Load environment variables
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors()); // Allow requests from GitHub Pages frontend
+// (Optional) Trust proxy headers if deployed on Render or similar
+app.set('trust proxy', 1);
+
+// Allow only your GitHub Pages frontend
+app.use(cors({
+  origin: 'https://drinivich.github.io',
+  methods: ['POST'],
+  allowedHeaders: ['Content-Type'],
+}));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -14,11 +23,12 @@ app.use(express.json());
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: process.env.EMAIL_USER, // Environment variable
-    pass: process.env.EMAIL_PASS  // Environment variable
+    user: process.env.EMAIL_USER, // Gmail address (from .env)
+    pass: process.env.EMAIL_PASS  // Gmail App Password (not normal password)
   }
 });
 
+// Generates the HTML content for the email
 function generateEmailTemplate(name, email, message) {
   return `
     <div style="font-family: 'Segoe UI', sans-serif; background-color: #f9f9f9; padding: 20px; border-radius: 10px;">
@@ -71,11 +81,12 @@ app.post('/submit', async (req, res) => {
   }
 });
 
-// Health check endpoint
+// Simple health check endpoint
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
+// Start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
