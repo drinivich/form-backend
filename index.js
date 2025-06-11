@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
+require('dotenv').config(); // Load environment variables
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -12,8 +13,8 @@ app.use(express.json());
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'lightningproteam@gmail.com',
-    pass: 'drkn sybw yezz xclv' // Use your app password here
+    user: process.env.EMAIL_USER, // Moved to environment variable
+    pass: process.env.EMAIL_PASS  // Moved to environment variable
   }
 });
 
@@ -89,7 +90,7 @@ function generateEmailTemplate(name, email, message) {
       word-wrap: break-word;
     }
     .field-value.email {
-      color: ##faf8f8;
+      color: #faf8f8;
       font-weight: 500;
     }
     .message-field {
